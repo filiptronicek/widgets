@@ -1,6 +1,6 @@
 // set widget parameter to 1, 2, or 4 for small, wide or large widget
 
-const { img: imgUrl } = "https://maas.filiptronicek.now.sh/r/kittens";
+const imgUrl = "https://maas.filiptronicek.now.sh/r/kittens";
 
 const imgReq = await new Request(imgUrl)
 const img = await imgReq.loadImage()
@@ -17,7 +17,6 @@ if (config.runsInWidget) {
 function createWidget(img) {
   let widget = new ListWidget()
   widget.backgroundColor = new Color("#ffffff")
-  widget.centerAlignContent()
   widget.url = imgUrl
   let image = widget.addImage(img)
   image.centerAlignImage()
@@ -30,12 +29,12 @@ function getDimensions() {
   const size = args.widgetParameter || 1
   switch (Number(size)) {
     case 1:
-      return [150, 150]
+      return [170, 170]
     case 2:
-      return [300, 150]
+      return [330, 180]
     case 4:
-      return [300, 300]
+      return [330, 330]
     default:
-      return [150, 150]
+      return [170, 170]
   }
 }
