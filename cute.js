@@ -29,7 +29,7 @@ function getDimensions() {
   const size = args.widgetParameter || 1
   switch (Number(size)) {
     case 1:
-      return [170, 170]
+      return [470, 470]
     case 2:
       return [330, 180]
     case 4:
