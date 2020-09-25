@@ -11,7 +11,7 @@ const res = await req.loadJSON()
 
 if (config.runsInWidget) {
   // create and show widget
-  let widget = createWidget("Coronavirus", `${res.todayCases} Today`, `${res.cases} Total`, "#53d769")
+  let widget = createWidget("Coronavirus", `${ res.todayCases === 0 ? res.todayCases : "N/A" } Today`, `${res.cases} Total`, "#53d769")
   Script.setWidget(widget)
   Script.complete()
 } else {
