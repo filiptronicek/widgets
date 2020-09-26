@@ -5,13 +5,18 @@
 // icon-color: deep-green; icon-glyph: user-md;
 // change "country" to a value from https://coronavirus-19-api.herokuapp.com/countries/
 const country = "Czechia"
-const url = `https://coronavirus-19-api.herokuapp.com/countries/${country}`
-const req = new Request(url)
-const res = await req.loadJSON()
+
+const endpoint = `https://coronavirus-19-api.herokuapp.com`; 
+const url = `${endpoint}/countries/${country}`;
+const req = new Request(url);
+const res = await req.loadJSON();
+
+const worldURLRequest = new Request(`${endpoint}/countries/world`);
+const world = await worldURLRequest.loadJSON();
 
 if (config.runsInWidget) {
   // create and show widget
-  let widget = createWidget("Coronavirus", `${ res.todayCases === 0 ? res.todayCases : "N/A" } Today`, `${res.cases} Total`, "#53d769")
+  let widget = createWidget("Coronavirus", `${ res.todayCases === 0 ? `${res.todayCases} today` : `${worldURLRequest.cases} cases worldwide` } `, `${res.cases} Total`, "#53d769")
   Script.setWidget(widget)
   Script.complete()
 } else {
