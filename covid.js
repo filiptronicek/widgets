@@ -19,13 +19,12 @@ const world = await worldURLRequest.loadJSON();
 if (config.runsInWidget) {
   // create and show widget
   let widget = createWidget(
-    "Coronavirus",
-    `${
-      res.todayCases !== 0 ? `${res.todayCases} today` : `${world.cases.toFixed(2)}M world`
-    } `,
-    `${res.cases} ${res.todayCases !== 0 ? `total` : `in ${country}`}`,
-    "#53d769"
-  );
+      "Coronavirus",
+      `${
+          res.todayCases !== 0 ? `${res.todayCases} today`
+                               : `${world.cases.toFixed(2)}M world`} `,
+      `${res.cases} ${res.todayCases !== 0 ? `total` : `in ${country}`}`,
+      "#53d769");
   Script.setWidget(widget);
   Script.complete();
 } else {
@@ -47,9 +46,8 @@ if (config.runsInWidget) {
   table.addRow(createRow("Critical", res.critical));
 
   if (config.runsWithSiri)
-    Speech.speak(
-      `There are ${res.cases} cases in ${country}, and ${res.todayCases} cases today.`
-    );
+    Speech.speak(`There are ${res.cases} cases in ${country}, and ${
+        res.todayCases} cases today.`);
 
   // present table
   table.present();
