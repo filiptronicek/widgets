@@ -21,7 +21,7 @@ if (config.runsInWidget) {
   let widget = createWidget(
     "Coronavirus",
     `${
-      res.todayCases === 0
+      res.todayCases !== 0
         ? `${res.todayCases} today`
         : `${worldURLRequest.cases} cases worldwide`
     } `,
