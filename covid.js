@@ -22,10 +22,10 @@ if (config.runsInWidget) {
     "COVID-19 Stats",
     `${
       res.todayCases !== 0
-        ? `${res.todayCases} today`
+        ? `${res.todayCases.toLocaleString()} today`
         : `${(world.cases / 1000000).toFixed(2)}M world`
     } `,
-    `${res.cases} ${res.todayCases !== 0 ? `total` : `in ${country}`}`,
+    `${res.cases.toLocaleString()} ${res.todayCases !== 0 ? `total` : `in ${country}`}`,
     "#53d769"
   );
   Script.setWidget(widget);
