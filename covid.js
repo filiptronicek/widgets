@@ -19,7 +19,7 @@ const world = await worldURLRequest.loadJSON();
 if (config.runsInWidget) {
   // create and show widget
   let widget = createWidget(
-    "Coronavirus",
+    "COVID-19 Stats",
     `${
       res.todayCases !== 0
         ? `${res.todayCases} today`
@@ -74,7 +74,7 @@ function createWidget(pretitle, title, subtitle, color) {
   w.addSpacer(5);
   let titleTxt = w.addText(title);
   titleTxt.textColor = Color.white();
-  titleTxt.font = Font.systemFont(22);
+  titleTxt.font = Font.systemFont(20);
   w.addSpacer(5);
   let subTxt = w.addText(subtitle);
   subTxt.textColor = Color.white();
