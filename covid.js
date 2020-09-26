@@ -1,12 +1,14 @@
-// Original script from https://gist.github.com/rudotriton/9d11ce1101ff1269f56844871b3fd536
+// Original script from
+// https://gist.github.com/rudotriton/9d11ce1101ff1269f56844871b3fd536
 
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-green; icon-glyph: user-md;
-// change "country" to a value from https://coronavirus-19-api.herokuapp.com/countries/
+// change "country" to a value from
+// https://coronavirus-19-api.herokuapp.com/countries/
 const country = "Czechia"
 
-const endpoint = `https://coronavirus-19-api.herokuapp.com`; 
+const endpoint = `https://coronavirus-19-api.herokuapp.com`;
 const url = `${endpoint}/countries/${country}`;
 const req = new Request(url);
 const res = await req.loadJSON();
@@ -16,19 +18,24 @@ const world = await worldURLRequest.loadJSON();
 
 if (config.runsInWidget) {
   // create and show widget
-  let widget = createWidget("Coronavirus", `${ res.todayCases === 0 ? `${res.todayCases} today` : `${worldURLRequest.cases} cases worldwide` } `, `${res.cases} Total`, "#53d769")
+  let widget = createWidget(
+      "Coronavirus",
+      `${
+          res.todayCases === 0 ? `${res.todayCases} today`
+                               : `${worldURLRequest.cases} cases worldwide`} `,
+      `${res.cases} Total`, "#53d769")
   Script.setWidget(widget)
   Script.complete()
 } else {
   // make table
   let table = new UITable()
-  
+
   // add header
   let row = new UITableRow()
   row.isHeader = true
   row.addText(`Coronavirus Stats in ${country}`)
   table.addRow(row)
-  
+
   // fill data
   table.addRow(createRow("Cases", res.cases))
   table.addRow(createRow("Active", res.active))
@@ -36,10 +43,11 @@ if (config.runsInWidget) {
   table.addRow(createRow("Deaths", res.deaths))
   table.addRow(createRow("Recovered", res.recovered))
   table.addRow(createRow("Critical", res.critical))
-  
+
   if (config.runsWithSiri)
-    Speech.speak(`There are ${res.cases} cases in ${country}, and ${res.todayCases} cases today.`)
-  
+  Speech.speak(`There are ${res.cases} cases in ${country}, and ${
+      res.todayCases} cases today.`)
+
   // present table
   table.present()
 }
