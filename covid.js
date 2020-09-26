@@ -41,12 +41,12 @@ if (config.runsInWidget) {
   table.addRow(row);
 
   // fill data
-  table.addRow(createRow("Cases", res.cases));
-  table.addRow(createRow("Active", res.active));
-  table.addRow(createRow("Today", res.todayCases));
-  table.addRow(createRow("Deaths", res.deaths));
-  table.addRow(createRow("Recovered", res.recovered));
-  table.addRow(createRow("Critical", res.critical));
+  table.addRow(createRow("Cases", res.cases.toLocaleString()));
+  table.addRow(createRow("Active", res.active.toLocaleString()));
+  table.addRow(createRow("Today", res.todayCases.toLocaleString()));
+  table.addRow(createRow("Deaths", res.deaths.toLocaleString()));
+  table.addRow(createRow("Recovered", res.recovered.toLocaleString()));
+  table.addRow(createRow("Critical", res.critical.toLocaleString()));
 
   if (config.runsWithSiri)
     Speech.speak(
