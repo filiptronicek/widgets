@@ -23,8 +23,8 @@ const req = new Request("https://taskord.com/graphql");
 
 req.method = "POST";
 req.headers = {
-  Authorization:
-    "Bearer API_KEY",
+  Authorization: "Bearer API_KEY",
+  "Content-Type": "application/json",
 };
 req.body = requestBody;
 
